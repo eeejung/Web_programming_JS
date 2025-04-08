@@ -1,0 +1,73 @@
+HTML 파서 -> 객체로 생성
+tree 형태로 메모리에 저장
+
+html 태그 - head / body
+head element tag
+body elemetn tag
+해당 태그 아래 text node , attribute 등이 객체들이 tree 구조로 메모리에 구성됨
+
+===
+
+1990 Internet 등장 
+팀 버너스 리
+Web 1.0 : 정적 페이지 서비스, 
+          사용자 구분없이 동일한 서비스
+          View만 제공
+          동기방식 요청 처리
+          전체 페이지 갱신 방식
+html (문법적으로 느슨, 문서 구조 정의 + css관련 + 동작관련 )
+css
+livescript(이벤트+문서의 구조)
+
+브라우저에서 process(program) 구동  =>  Java
+브라우저에 소형 JVM이 포함
+
+livescript => JavaScript => ECMAScript 
+2000년초반 (W3C 웹 표준 1.0) 
+HTML (구조) => XHTML1.0
+CSS 표현
+JavaScript(ECMAScript) 동작, 구조의 동적 변경
+
+2000년대 초반 Web에 멀티미디어 포함, 사용자 참여 증가
+Rich Internet
+
+Google과 Ajax
+Web 2.0 : 비동기 요청 + 부분 페이지 갱신 방식
+
+2007~2008 Smart Phone
+
+Browser내에서만 JavaScript 실행
+2009 Nodejs (JavaScript 런타임)
+
+offline 가능 + CORS 개선 + Background Thread + 다양한 저장소 +...필요성 등 
+HTML5 컨소시엄 구성
+
+BigData -----> 딥러닝 ---> AI
+javascript 체계적 언어로 개선 (ES6 2015 ...)
+D3.js 
+tensorflow.js
+
+-----------------------------------------------------
+html 태그명은 대소문자를 구별하지 않습니다.
+html은 최상위 태그는 하나입니다. (root 태그, root 엘리먼트) 
+html.dtd문서, html 스키마 문서 
+
+웹 문서에 style 적용 방법 :
+1.inline  : 태그의 style속성 (웹 표준에서 권장하지 않는 방식, 재사용성이 낮고, 유지 보수가 어려움)
+2.<style> 태그 : 전역 스타일과 다른 스타일을 적용할때 
+
+3.외부파일을 연결 :  .css, .sass 등의 파일로 스타일을 정의하고
+  <link> 태그로 연결합니다.
+  전역으로 여러 페이지에 일관된 스타일을 적용할때 권장
+
+# html문서에 스타일 적용은  <style> 태그 와 <link> 태그의 선언된 순서에 영향을 받습니다.
+
+<script> 태그는 javascript를 정의하거나 외부 파일(.js)을 연결할 때 사용합니다.
+javascript를 html문서에 적용 방법 :
+1. inline 방식 : 태그 내부에 이벤트 속성의 값으로 정의 ( 비표준, 권장하지 않음, 재사용성 낮고, 관리 어려움
+2. <script> 태그를 사용해서 html문서 내부에 정의
+   <head>의 child(함수를 정의), <body>의 child(즉시실행시킬 때)로 정의할 수 있습니다.
+3. <script> 태그를 사용해서 분리된 .js파일을 연결
+
+<body>의 child(즉시실행시킬 때)로 정의하는 <script>는 순차적으로 실행됩니다.
+-----------------------------------------------------

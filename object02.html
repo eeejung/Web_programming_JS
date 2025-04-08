@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript 객체</title>
+</head>
+<body>
+
+    함수 문법을 사용해서 인스턴스를 생성하는 생성자 함수를 정의 <br>
+    생성자 함수로부터 인스턴스를 생성할 때 new 를 사용합니다.<br>
+    ES6 이전부터 사용되어 온 객체 생성 방식<br>
+    [[Prototype]] 기반의 상속이나 메서드 재사용 등 고급 기능을 사용 <br>
+    동일한 구조를 가진 여러 인스턴스 생성에 적합합니다.<br>
+    new 생성자함수()로 생성되는 원형객체에 prototype 속성이 생성됩니다<br>
+    prototype 속성에 기능 메서드를 추가하면 new 생성자함수()로 생성되는 모든 인스턴스들이 공유하게 됩니다.<br>
+
+    <script>
+        function Student(name, kor, math, eng) {
+            this.name = name;
+            this.kor = kor;
+            this.math = math;
+            this.eng = eng;
+        }
+        Student.prototype.total = function(){
+        return this.kor + this.math + this.eng
+        }
+
+        Student.prototype.pass = function(){
+        if(this.total()/3 >= 60){
+                return true;
+            }else {
+                return false;
+            }
+        }
+
+        let kim = new Student("김ㅇㅇ", 80, 80, 80);   // 인스턴스 생성
+        let song = new Student("송ㅇㅇ", 77, 88, 99); // 인스턴스 생성
+
+        document.write(`${kim.name}의 총점은 ${kim.total()} <br>`);
+        document.write(`${song.name}의 총점은 ${song.total()} <br>`);
+
+        console.dir(kim); // kim 인스턴스의 속성과 메서드 확인
+        
+
+     </script>
+
+     함수 문법으로 객체를 정의하면 기능을 portotype 영역에 한번만 생성되므로 메모리를 효율적으로 사용 가능 <br>
+     생성자 함수로 정의된 Student Prototype은  prototype 기반으로 상속(Object)을 선언 가능 <br>
+
+    <script>
+        /*
+        function SubStudent(grade) {
+            this.grade = grade;
+        }
+        */
+        // Student 생성자 함수를 호출 -> name, kor, math, eng 속성을 상속받음
+        function SubStudent(name, kor, math, eng, grade) {
+            // Student.apply(this, [name, kor, math, eng]); // 부모 생성자 호출
+            const base = Student.bind(this);
+            base(name, kor, math, eng);
+            this.grade = grade;     // grade 속성 정의
+        }
+
+        SubStudent.prototype = Student.prototype;  //상속을 선언
+
+        let park = new SubStudent(6);
+        // 생성된 객체(park)에 kor, math, eng, name 속성을 동적으로 추가
+        park.kor = 66;
+        park.math = 77;
+        park.eng = 88;
+        park.name = "박ㅇㅇ";
+
+        document.write(`${park.name}의 총점은 ${park.total()} <br>`);
+
+        // console.dir(park); // park 인스턴스의 속성과 메서드 확인
+
+        console.log((park instanceof Object) + "<br>");     // true
+        console.log((park instanceof Student) + "<br>");    // true
+        console.log((park instanceof SubStudent) + "<br>"); // true
+
+    </script>
+    
+    apply(), bind() 함수는 파라미터로 전달되는 this(함수의 실행 컨텍스트)를 변경합니다 <br>
+    apply() 함수는 (Student 생성자) 함수를 즉시 호출합니다 즉시 실행하면서 this 설정 <br>
+    bind() 함수는 (Student 생성자) 함수를 즉시 호출하지 않고, this와 인자를 바인딩한 새로운 함수를 반환, this를 바인딩한 후 나중에 실행 <br>
+    참고> call() 함수도 his(함수의 실행 컨텍스트)를 변경합니다<br>
+
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript 기본 : 변수</title>
+</head>
+<body>
+    let 변수; 함수 scope, window의 속성으로 추가됨(전역), 호이스팅됨, 중복선언 가능 <br>
+    var 변수; 블럭 scope, window의 속성으로 추가 X, ES6, 중복선언 불가능 <br>
+    const 변수; 상수 선언, 반드시 초기화 필요, 변경 불가 (TypeError) <br>
+        const 변수 선언 시 초기화하지 않으면 SyntaxError 발생 <br>
+    변수는 hoisting이 되지만 실제 할당은 원래 위치에 할당됨 <br>    
+
+    <script>
+        f(); // 함수 호출
+        // f2();    // 호이스팅
+
+        const SUCCESS = true;
+        document.writeln(SUCCESS+"<br>");
+        // SUCCESS = false; // TypeError 발생, 상수는 변경 불가    
+
+        console.dir(window); // window 객체의 속성으로 추가됨
+        console.dir(this);   // this는 window 객체를 가리킴, 전역에서 this는 window를 가리킴
+        var globalVar = 100;                    // 전역변수, window의 속성으로 추가됨
+        let localVar = "let으로 선언되는 변수";  // window의 속성으로 추가되지 않음
+
+        {
+            var local = "block scope";
+            let local2 = "block scope";
+        }
+        document.writeln(local+"<br>"); // block, var은 블럭을 무시하고 전역으로 사용됨
+        // document.writeln(local2+"<br>"); // ReferenceError, let은 블럭을 무시하지 않음
+
+        // 무조건 함수 definition은 호이스팅 됨
+        function f() {
+            var functionVar = "function scope";
+            globalVar = "window의 속성으로 추가됨";
+            document.writeln("f() 함수가 호출됨 <br>");
+        };
+        // document.writeln(functionVar+"<br>"); // ReferenceError, functionVar는 함수 scope
+
+        let f2 = function () {
+            document.writeln("f2() 함수가 호출됨 <br>");
+        }
+
+        var globalVar = 100;                       // 중복선언 가능
+        // let localVar = "let으로 선언되는 변수";     // 중복선언 불가, SyntaxError 발생
+
+        
+        
+    </script>
+
+</body>
+</html>

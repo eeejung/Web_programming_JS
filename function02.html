@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript 기본 : 함수</title>
+</head>
+<body>
+    Q> 함수에 선언된 형식매개변수의 수보다 많은 값을 전달한 경우? ignore<br>
+    Q> 함수에 선언된 형식매개변수의 수보다 적게 값을 전달한 경우? undefined<br>
+    모든 함수는 명시적 선언없이 가변인자를 가지는 함수로 정의됩니다<br>
+    모든 함수 객체는 생성하면 arguments, caller, length, name, propotype 속성이 자동으로 생성됩니다.<br>
+    화살표함수 객체는 arguments 속성이 없음<br>
+    propotype 속성은 함수 문법으로 객체 생성을 위한 생성자 함수를 정의할때 객체의 기능(메서드)를 정의하는 객체이며
+    생성자 함수로부터 생성된 모든 인스턴스가 공유하는 객체입니다.<br>
+    caller 속성은	현재 함수를 호출한 함수를 참조합니다. <br>
+    length 속성은 함수에 정의된 매개변수(parameter)의 개수가 저장됩니다<br>
+    name 속성은 	함수의 이름이 저장된 속성입니다<br>
+    arguments 속성은 함수 호출 시 전달한 파라미터 값들이 저장되는 유사 배열 객체입니다.<br>
+    arguments 속성은 함수 호출시에 생성되어 length 멤버필드가 자동 생성되며 실제 전달한 파라미터 개수가 저장됩니다
+    즉 arguments의 size값이 저장됩니다.<br>
+    ES6에서 함수 호출시에 값을 전달하지 않을 경우 사용할 기본값을 설정할 수 있도록 개선됨<br>
+    <script>
+        function hap(a, b, c){
+	      return  a+b+c ;
+        } 
+        document.write(hap(1, 2, 3)+"<br>");
+        document.write(hap(1, 2 )+"<br>");
+        document.write(hap(1, 3, 5, 7, 9)+"<br>");
+
+        function hap2(){
+            document.write(arguments.length+"<br>"); 
+            console.log(arguments);
+            let result = 0;
+            for(let n of arguments){
+                document.write(n+"<br>"); 
+                result += n;
+            }
+            return result;
+        }
+        console.dir(hap2);
+        document.write(hap2(1, 3, 5, 7, 9)+"<br>");
+
+        const greet = (name = "Guest") => `Hello, ${name}`;
+        document.write(greet()+"<br>"); 
+        document.write(greet('Seoul')+"<br>"); 
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript 기본 : 함수</title>
+</head>
+<body>
+    함수의 인수(파라미터)로 함수(기능)를 전달할 수 있습니다 <br>
+    callback function :다른 함수에 인자로 전달되는 함수로서 특정 이벤트 또는 조건이 발생했을 때 호출해서 실행시키기 위해 전달되는 함수입니다. <br>
+    콜백 함수는 비동기적인 작업에서 많이 사용됩니다.<br>
+    예시 => 이벤트 처리, HTTP 요청에 대한 응답을 처리하는 함수, window.setInterval(f, millisecond), window.setTimeout(f, millisecond) <br>
+    
+    <script>
+        function caller(param) {
+        for(let i=0;i<5;i++){
+            param(i);
+            }  
+        }
+
+        function callee(p){
+            alert(`I'm function: ${p}`)
+        }
+
+        // caller(callee);
+        // 화살표 함수로도 가능
+        // caller( (m)=>{ alert(`I'm callee function: ${m}`) } );
+    </script>
+
+    <script src="park.js"></script>
+    <script src="kim.js"></script>
+    <script>
+        document.write("피타고라스 빗변의 길이: "+pythagoras(3, 4)+"<br>"); //park.js 테스트
+        document.write(square(3, 5)+"<br>"); //kim.js 테스트
+        // 함수 이름 충돌 (park이 만든 파일에도 square 함수가 있고 kim이 만든 파일에도 있어서 -> overwite됨)
+    </script>
+
+    내부함수는 내부함수가 정의된 함수(enclosing 함수)의 내부에서만 호출 할 수 있습니다. <br>
+
+    <script>
+        let x = "전역변수";
+        function outer (){
+            let local = "로컬변수";
+            let x = "outer.x";
+            function inner(){
+                let innerLocal = "내부함수의 로컬변수";
+                let x ="inner.x";
+                alert(innerLocal +", "+x +", "+local);
+            }   
+            inner();   
+            alert("from outer :"+x+", " +local)      ;
+        }
+        //outer();
+        //inner();
+    // alert(x);
+    </script>
+    
+    <h3>  타이머 설정에 따라 실행되는 callback 함수 실습 </h3>  
+    <div id="timer"></div>
+    <button id="stop">Stop</button>
+
+    <script>
+        window.onload= function(){
+        let div1 = document.getElementById("timer");
+        let intervalID = setInterval(()=>{   
+                                    div1.innerHTML=new Date()
+                                    }, 1000);
+
+        let btn = document.getElementById("stop");
+        btn.onclick= function(){
+        window.clearInterval(intervalID);
+        }                                 
+        };
+    </script>
+
+</body>
+</html>

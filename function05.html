@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript 기본 : Closure 함수</title>
+</head>
+<body>
+    Closure 함수 :  함수가 자신이 선언된 환경(렉시컬 스코프, Lexical Scope)을 기억하고, 그 환경에 접근할 수 있는 기능을 가지고 있는 함수<br>
+    <script>
+        function counter() {
+            let count = 0; // 외부에서 직접 접근 불가능
+            return {
+                increment: function() {
+                    count++;
+                    console.log(`Count: ${count}`);
+                },
+                decrement: function() { 
+                    count--;
+                    console.log(`Count: ${count}`);
+                }
+            };
+        }
+        const myCounter = counter(); 
+        console.log(myCounter);
+
+        myCounter.increment(); // Count: 1
+        myCounter.increment(); // Count: 2
+        myCounter.increment(); // Count: 3
+
+        myCounter.decrement(); // Count: 2
+        myCounter.decrement(); // Count: 1
+
+        console.log(myCounter.count); // undefined, count는 외부에서 접근 불가능
+        // => 외부에서는 직접 수정이 안되고 increment, decrement 메서드를 통해서만 수정 가능
+        
+        function multiply(x) {
+            return function(y) {
+                return x * y;
+            };
+        }
+
+        const double = multiply(2); // x = 2
+        console.log(double);
+        console.log(double(5));     // 10, y = 5
+        console.log(double(10));    // 20, y = 10
+        // double에 2는 고정된 채로 전달되고 -> y값만 바뀌어서 들어감
+
+    </script>
+
+    <button id="save">저장</button>
+    <button id="delete">삭제</button>
+    <script>
+        function createButton(label) {
+            return function() {
+                console.log(`${label} 버튼이 클릭되었습니다.`);
+            }
+        }
+        document.getElementById("save").onclick = createButton("저장");
+        document.getElementById("delete").onclick = createButton("삭제");
+    </script>
+
+</body>
+</html>

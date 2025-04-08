@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript 기본 : 연산자</title>
+</head>
+<body>
+    산술연산자, 비교연산자, 논리연산자(!, &&, ||) <br>
+    javascript엔진은 연산자에 따라 자동 형변환이 필요하면 형변환 수행합니다<br>
+    javascript 코딩 스타일로 true일만 실행 또는 false일때만 실행 &&, ||로 처리합니다. <br>
+    숫자로 구성된 문자열을 number로 형변환 방법 :   Number()  또는  parseInt() 사용 <br>
+    조건1 && 조건2 는 조건1이 true이면 조건2을 실행시켜야 최종적으로 true, false결정 <br>
+    조건1 || 조건2 는  조건1이 false 이면 조건2을 실행시켜야 최종적으로 true, false결정  <br>
+    &&, || 연산을 단순 조건 if 문 대신 사용하는 예) React에서 {} <br>
+    <script>
+        document.write(Math.pow(2, 3)+"<br>");  
+        document.write((2 ** 3) +"<br>");       // 새로 추가됨
+
+        let a=123, b="123";
+        document.write((a==b) +"<br>");     // value만 비교, 연산자에 따라서 자동 형변환 수행행
+        document.write((a===b) +"<br>");    // value와 type 모두 비교, !== 연산자도 존재 
+
+        console.log(Number("123seoul")); //NaN
+        console.log(parseInt("123seoul"));
+        console.log(parseInt("077", 8)); //첫번째 인수가 8진수로 전달됨 -> decimal로 변환
+        console.log(parseInt("ff", 16)); //첫번째 인수가 16진수로 전달됨 -> decimal로 변환
+        console.log(parseInt("1000001", 2));   //첫번째 인수가 2진수로 전달됨 -> decimal로 변환
+        document.write("<br>"); 
+    </script>
+
+    <script>
+        // JS 코딩 스타일로 true 일때만 실행, false 일때만 실행  (&&, ||로 처리)
+        // 조건 && 조건, 조건 || 조건
+
+        // 사용자 입력 받아서 &&, ||로 짝수, 홀수 출력하기
+        // 짝수, 홀수 출력하기
+        let num = parseInt(window.prompt("정수를 입력하세요", 1));
+        (num%2==0) && document.write(`${num}은 짝수 <br>`); 
+        (num%2==0) || document.write(`${num}은 홀수 <br> `);
+    </script>
+
+    <script>
+        // 삼항 연산자 (조건 ? true : false)
+        let num2 = parseInt(window.prompt("정수를 입력하세요", 1));
+        document.write((num2%2==0) ? `${num2}은 짝수` : `${num2}은 홀수 <br>`);
+        // (num%2==0) ? document.write( `${num}은 짝수  <br>`) : document.write(`${num}은 홀수 <br> ` );
+    </script>
+
+    instanceof는  [인스턴스 instanceof  타입|부모타입 ]   is a 관계에 대해 false, true리턴 <br>
+    ?? 연산자는 null 또는 undefined일 때만 기본값을 설정할 수 있는 연산자 (ES11) <br>
+    ?. 인스턴스(객체).속성이 null 또는 undefined이어도 안전하게 접근 가능  (ES11) <br>
+    <script>
+        let x = function() {  } ?? "default";
+        document.write(`${x}  <br> ` );  
+        let y = function() { return 0; } ?? "default";
+        document.write(`${y}  <br> ` );  
+        const user = {name:'korea', frend:'010-1230-4567' };
+       // document.write(`${user.mobile}  <br> ` );  
+       // document.write(`${user.house}  <br> ` ); 
+       // document.write(`${user.office}  <br> ` ); 
+
+        document.write(`${user?.mobile?.house?.office}  <br> ` ); 
+        document.write(`${user?.mobile || user?.house || user?.office || user?.frend}  <br> ` ); 
+     </script>
+     
+     Boolean() 또는 !! 를 사용해서 boolean으로 형변환 할 수 있습니다.<br>
+     <script>
+        document.write(!0 + ", "+ !!0 +"<br>" ); 
+        document.write(!NaN  + ", "+ !!NaN + "<br>" ); 
+        document.write(!undefined + ", "+ !!undefined+ "<br>" ); 
+        document.write(!null  + ", "+!!null+"<br>" ); 
+        document.write(!{} + ", "+ !!{}+"<br>" ); 
+        document.write(![]  + ", "+!![] +"<br>" ); 
+        document.write(!''  + ", "+!!''+"<br>" ); 
+        document.write(!' '  + ", "+!!' ' +"<br>" ); 
+     </script>
+
+    
+</body>
+</html>

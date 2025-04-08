@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> <!-- 웹 표준 인코딩 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- viewport는 반응형 웹 컨텐츠와 관련된 설정 -->
+    <title>HTML 기본</title>
+
+    <!-- 
+    html문서에 스타일 적용은 
+    <style> 태그 와 <link> 태그의 선언된 순서에 영향을 받음
+    -->
+
+    <!-- <link> 태그 == 외부파일을 연결 
+     전역으로 여러 페이지에 일관된 스타일을 적용할때 권장 -->
+    <link rel="stylesheet" href="mycss.css">
+
+    <!-- <style> 태그 == 전역 스타일과 다른 스타일을 적용할때 -->
+    <style>
+        body {
+            background-color:cornflowerblue;
+        }
+    </style>
+
+    <script src="myscript.js"></script>
+</head>
+
+<!-- 
+<body onload="javascript:window.alert('load event 발생')">
+    내용용용용
+-->
+
+<body>
+    내용용용용
+    <script>
+        window.alert('html 태그는 end 태그를 생략해도 되는 태그들이 있습니다');
+    </script>
+</body> 
+
+</html>

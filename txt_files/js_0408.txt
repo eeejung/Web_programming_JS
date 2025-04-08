@@ -1,0 +1,67 @@
+javascript 특성?
+플랫폼 독립적 
+인터프리터 언어, 동적 타이핑 언어
+함수적 프로그래밍 언어
+객체 지향 언어
+Client Side(Browser)에서 실행될때 html 요소의 이벤트 처리와 DOM API를 이용해서 동적 문서 구조 변경, 
+사용자 입력 값들의 validation check
+비동기 요청, 처리
+다양한 라이브러리 
+
+html은 Browser에서 실행되는 문서의 View의 구조를 정의
+<html> ----<head> --- <meta>,<link>, <style>,<script>, <title>
+        |--<body>   
+             |--- 텍스트 태그 
+             |--- 레이이아웃 <div> <span>,  <header>,<footer>, <nav>, <aside>, <artcle>, <section>
+             |--- 멀티미디어 <img /> <canvas><audio><video>
+             |--- 테이블 
+             |--- <form>, <input >, <textarea>, <select>, <datalist>
+
+모든 태그의 공통 속성 : id, class, name, style, 
+
+
+CSS
+1. inline 방식 : style 속성으로 정의
+2. html문서 내부에 <style>로 정의
+3. <link> 사용해서 외부파일(.css)을 연결
+
+selector { 
+            property : value1 value2 ;
+            property2 : value3;
+            ....
+          }
+
+selector에는 태그명, #id속성값,  .class속성값 , *, 부모 > 자식, 부모 자손
+            [속성명], [속성=값], [속성*=값], [속성|=값], [속성^=값], [속성$=값]
+            :checked, :focus,  ::가상selector
+ 
+          
+css의 property 값을 선언할때 size 관련된 값은 단위를 함께 선언합니다.
+css의 property 값을 선언할때 color 관련된 값은 #RGB, #RGBR
+#ffffff, #fff, white, black, rgb(n, n, n) , rgba(n, n, n, n)
+
+CSS는 모든 html요소에 style을 적용할때 Box Model를 사용하여 적용합니다
+content - padding - border영역-margin-border영역 - padding - content 
+--------------------------------------------------------------------------
+
+javascript 입력 :
+window.prompt(message, defaultvalue) : string
+window.confirm(message) : boolean
+readline모듈, createInterface(), interface.question()
+
+javascript 출력 :
+document.write()
+console.log()
+
+javascript 자료형  : 
+string, number, boolean, undefined, object, function, bigint, Symbol
+
+변수 선언 : 
+var 변수 - 동일 변수명으로 중복선언 가능, 함수 scope, window 전역 객체(global)의 멤버 속성으로 추가, hoisting됩니다
+let 변수 - 동일 변수명으로 중복선언 X, 블럭 scope, indow 전역 객체(global)의 멤버 속성으로 추가 X, 
+const 상수 - 반드시 초기화 , 변경 불가
+
+
+javascript 주석 :  //, /*  ~ */
+html 주석 : <!-- 주석 -->
+css 주석 :  /*  ~ */

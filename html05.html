@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>테이블과 Form</title>
+    <style>
+        table, th, tr, td {
+            border: solid 1px black;
+            border-collapse: collapse;
+            padding: 8px;
+            text-align: center;
+        }
+        td {
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+    테이블 태그는 표형식의 이미지, 데이터를 문서로 보여줄때 사용합니다.
+    행별로 열 개수를 다르게 구성할 수 있습니다. 
+    colspan 속성 , rowspan 속성, 
+    colgroup, col 태그
+    <table>
+        <tr><th></th><th></th></tr>
+        <tr><td></td><td></td></tr>
+    </table>
+    브라우저에서 실행되는 html에서 사용자로부터 입력을 받으려면
+    1. form태그내에 input, textarea, select...사용
+    2. javascript에서 입력받는 함수를 사용     
+    -->
+
+    <!-- 
+    <table>
+        <tr><th>이름</th><th>국어</th><th>영어</th><th>수학</th><th>program</th></tr>
+        <tr><td>아이유</td><td>85</td><td>85</td><td colspan="2">85</td></tr>
+        <tr><td>박보검</td><td>80</td><td>80</td><td>80</td><td>80</td></tr>
+        <tr><td rowspan="2">문소리</td><td>90</td><td>90</td><td>90</td><td>90</td></tr>
+        <tr><td>95</td><td>95</td><td>95</td><td>95</td></tr>
+    </table> 
+    -->
+
+    <table>
+        <tr><td rowspan="3">사진</td><th colspan="5">이 력 서</th></tr>
+        <tr><td rowspan="2">성 명</td><td rowspan="2" style="text-align: right;">    인</td><td>생 년 월 일</td></tr>
+        <tr><td>   년   월   일생  (만   세) </td></tr>
+        <tr><td>주 소</td></tr>
+        <tr><td>전화번호</td><td colspan="5">(휴대전화)</td></tr>
+    </table>
+
+    <form method="get" action="data.jsp">
+        <input type="button" value="좋아하는 봄 꽃" onclick=""> <br>
+        <input type="checkbox">등산 <input type="checkbox">러닝 <input type="checkbox">테니스 <input type="checkbox">수영 <br>
+        <input type="color"><br>
+        <input type="date"><br>
+        <input type="datetime-local"><br>
+        <input type="email"><br>
+        <input type="file"><br>
+        <input type="hidden"><br>
+        <input type="image"><br>
+        <input type="month"><br>
+        <input type="number" min="0" max="100" step="5"><br>
+        <input type="password"><br>
+        <input type="radio"><br>
+        <input type="range"><br>
+        <input type="search"><br>
+        <input type="tel" pattern="\d{3}-\d{4}-\d{4}"><br>
+        <input type="text" placeholder="좋아하는 동물을 입력하세요" focus> (default value)<br>
+        <input type="time"><br>
+        <input type="url"><br>
+        <input type="week"><br>        
+        <textarea rows="5"  cols="30"></textarea><br>
+        <progress min="0"   max="100" ></progress><br>
+        <select>
+            <option value="인천">인천</option>
+            <option value="서울">서울</option>
+            <option value="제주">제주</option>
+            <option value="수원">수원</option>
+        </select><br>
+        <input list="browsers" name="browser" id="browser">
+        <datalist id="browsers">
+            <option value="Edge">
+            <option value="Firefox">
+            <option value="Chrome">
+            <option value="Opera">
+            <option value="Safari">
+          </datalist>
+          <br>
+        <input type="submit"> <input type="reset"><br>
+    </form>
+</body>
+</html>

@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback함수를 이용한 비동기 처리 예 </title>
+</head>
+<body>
+    <pre>
+        const fs = require('fs');
+        // file1.txt의 내용을 읽고, result.txt에 writ
+        fs.readFile('file1.txt', 'utf8', (err, data1) => {
+            if (err) {   return console.error('Error reading file1:', err);      }   
+            fs.writeFile('result.txt', data1, (err) => {
+                if (err) {    return console.error('Error writing result.txt:', err);      }
+                // file2.txt의 내용을 읽고, result.txt에 append
+                fs.readFile('file2.txt', 'utf8', (err, data2) => {
+                if (err) {  return console.error('Error reading file2:', err);         }           
+                fs.appendFile('result.txt', '\n' + data2, (err) => {
+                        if (err) { return console.error('Error appending to result.txt:', err);   }   
+                        {// file3.txt의 내용을 읽고, result.txt에 append
+                        fs.readFile('file3.txt', 'utf8', (err, data3) => {
+                            if (err) {   return console.error('Error reading file3:', err);    }                  
+                            fs.appendFile('result.txt', '\n' + data3, (err) => {
+                                if (err) {return console.error('Error appending to result.txt:', err);      }
+                                console.log('All files have been successfully merged into result.txt');
+                            });
+                        });
+                    });
+                });
+            });
+        });
+
+        여러 비동기 작업을 순차적으로 수행시킬때 callback 함수 내부에 callback 함수들이 중첩되는 구조로 
+        정의하게 되며, 코드의 깊이가 깊어지고, 가독성 낮아지고, 복잡해지고 , 오류 발생 시점을 파악이 어려워짐...
+        =>callback hell..
+
+    </pre>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javacript 기본 : 배열 </title>
+</head>
+<body>
+    컴파일 언어에서 사용하는  배열과의 차이점 : <br>
+    1. 동적으로 size 변경됨<br>
+    2. 저장되는 요소의 타입이 동일하지 않아도 됨<br>
+    javascript의 배열은 reference type입니다 object 유형입니다.<br>
+    javascript의 배열은 생성되면 length 멤버 필드가 자동 생성되고 배열의 size가 저장됩니다 <br>
+    [], new Array(),  new Array(5) , new Array (1, 2, 3, 4, 5, 6) 를 사용해서 배열을 생성할 수 있습니다<br>
+    배열의 메서드중에서 원본 배열의 요소를 변경하는 메서드, 새로운 배열을 반환하는 메서드
+    
+  <script>
+    let array1 = [true, 'korea', 3.14, function(){}, {name:"Kim", age:30} , [10,20]];
+    document.write(array1.length+"<br>");
+    array1.push(123n, {});
+    document.write(array1.length+"<br>");
+  </script>
+  
+</body>
+</html>
