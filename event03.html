@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- location 사용하기 -->
+    <script>
+        function getColor() {
+            const r = Math.floor(Math.random() * 255 + 1);
+            const g = Math.floor(Math.random() * 255 + 1);
+            const b = Math.floor(Math.random() * 255 + 1);
+            return `rgb(${r}, ${g}, ${b})`;
+        }
+
+        window.onload = function() {
+            document.body.style.backgroundColor = getColor();
+
+            // 이건 자동으로 색이 바뀌게됨
+            /*
+            setInterval(function () {
+                document.body.style.backgroundColor = getColor(); // 랜덤 색상으로 배경색 변경
+            }, 5000);       // 5초마다 색상 변경됨
+            */
+           
+        }
+        
+        // 새로고침 버튼 클릭 시 배경색 변경
+        function changeColor() {
+            location.href = location.href;
+        }
+
+    </script>
+    <!-- 
+    페이지 새로고침 방법 : 
+        location.href = location.href , location.reload(), location.assign(location.href) , location.replace(location.href), location=location
+    -->
+    
+</head>
+<body>
+    <button id="refresh" onclick="changeColor();">새로고침</button>
+    <hr>
+
+    <!-- 1) select 객체를 사용해서 과일을 선택하는데 선택한 과일을 바꾸면 해당 과일을 경고창에 출력하기 -->
+    
+    <select id="fruitSelect">
+        <option value="사과">사과</option>
+        <option value="배">배</option>
+        <option value="천혜향">천혜향</option>
+        <option value="딸기">딸기</option>
+        <option value="참외">참외</option>
+        <option value="바나나">바나나</option>
+        <option value="토마토">토마토</option>
+    </select>
+    <script>
+        // select 요소 가져오기
+        const fruitSelect = document.getElementById("fruitSelect");
+
+        // change 이벤트 핸들러 추가
+        fruitSelect.addEventListener("change", function () {
+            const selectedFruit = this.value;     // 선택된 과일의 값
+            alert(`${selectedFruit} 선택`);        // 경고창 출력
+        });
+    </script>
+
+    <hr>
+
+    <!-- 2) window.open으로 이미지 새 창에서 열기 -->
+    
+    <img id="img1" src="/img_files/kk.jpg" width="130" height="100"/>
+    <script>
+        let img1 = document.getElementById("img1");
+        img1.addEventListener("click", function () {
+            window.open("./img01.html", "", "width=800, height=800", "_blank");
+        }, false);
+
+        // screen 객체 사용하기
+        for( key in screen){
+            console.log("*", key, screen[key]);
+        }
+    </script>
+
+</body>
+</html>

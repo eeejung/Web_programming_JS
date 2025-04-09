@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수 내부에서 this ?</title>
+</head>
+<body>
+    1. 선언적 함수에서 this == Window <br>
+    2. 생성자 함수 내부에서 this는 new로 생성된 인스턴스 자신 (Prototype Object로 부터 만들어졌기 때문에 Object로 출력됨) <br>
+    3. 익명 함수에서 this == Window <br> <!-- let 키워드의 객체는 다른 함수 내부나 외부에서 선언된게 아니기 때문에 -->
+    4. 화살표 함수에서 this == Window <br>
+    5. 이벤트 핸들러 함수에서 this == 이벤트가 발생된 소스 객체 <br>
+    <br>
+
+    <script>
+        function f() {
+            document.write("선언적 함수에서 this :" + this + "<br>");
+        }
+        f();
+        
+        let f2 = function() {
+            document.write("익명 함수에서 this :" + this + "<br>");
+        }
+        f2(); 
+        
+        (() => {
+            document.write("화살표 함수에서 this :" + this + "<br>");
+        })();
+
+        /*
+        여기서의 this == User 객체
+        User 객체는 자동으로 Object를 상속받음
+        그래서 User()에서 this를 확인하면 Object라고 나옴
+        */
+        function User() {
+            document.write("User() 생성자 함수에서 this :" + this + "<br>");
+        }
+        new User();
+        
+        function f3(callback){ 
+            callback();
+        };
+        function callee (){
+            document.write("파라미터로 전달된 함수에서 this :"+this+"<br>");
+        }
+        f3(callee);
+
+        function f5() {
+            let inner = () => {
+                document.write("내부 함수에서 this :" + this + "<br>");
+            };
+            inner();
+        }
+    </script>
+
+<!-- ################### -->
+    <button id="btn">클릭</button>
+    <script>
+        document.getElementById("btn").onclick= function(){
+            document.write("이벤트 핸들러 함수 내부에서 this :"+this+"<br>");
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript 객체</title>
+</head>
+<body>
+    <script>
+        const person = {
+            name: "HGKim",
+            age: 25,
+            address: {
+                city: "Seoul",
+                country: "Korea"
+            },
+            phone : "010-1234-5678",
+            email : "hgkim@korea.com",
+            company : "Samsung"
+        };
+        
+        console.log(person);
+        
+        /*
+        const { company, ...newObj } = person; // company 속성 제거
+        console.log(newObj);
+
+
+        const filteredPerson = Object.fromEntries(
+            Object.entries(person).filter(([key]) => key !== "email")
+        );
+
+        console.log(filteredPerson);
+        */
+
+        const keysToRemove =['phone', 'company'];
+
+        const filteredPerson2 = Object.keys(person).reduce((acc, key)=>{
+                if(!keysToRemove.include(key)) {
+                    acc[key] = person[key]
+                }
+                return acc;
+        }, {})
+        
+        console.log(filteredPerson2);
+    </script>
+
+    OOP 객체는 속성 private 선언하고, getter/setter 은 public으로 정의합니다.<br>
+    
+    <script>
+        class Person {
+            #name;  // 속성 앞에 #을 붙이면 private 속성으로 선언됨
+            #age;
+            constructor(name, age) {
+                this.#name = name; 
+                this.#age = age;
+            }
+
+            // getter, setter
+            setName(name) {
+                // 권한체크, 값의 유효범위 check, 로깅 등
+                this.#name = name;
+            }
+
+            setAge(age) {
+                if(age > 0) {
+                    this.#age = age || 15;      // 기본 값 == 15세
+                }
+            }
+
+            getName() {
+                return this.#name;
+            }
+
+            getAge() {
+                return this.#age;
+            }
+
+            // override
+            toString() {
+                return `Name: ${this.#name}, Age: ${this.#age}`;
+            }
+
+        }
+        const p = new Person('Seoul, Korea', 500);
+        // document.write(p.#name + ", " + p.#age + "<br>"); // error -> Private Field... (private 속성은 외부에서 접근 불가)
+        
+        document.write(p + "<br>");
+
+        p.setAge(-1);
+        document.write(p + "<br>"); // 값이 변경되지 않음
+        
+    </script>
+
+</body>
+</html>

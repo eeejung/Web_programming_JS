@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript : 이벤트</title>
+
+    <script>
+        /*
+        // 핸들러 3만 수행됨
+        window.onload = function() {
+            alert("window 객체의 load 이벤트 핸들러 1");
+        }
+
+        window.onload = function() {
+            alert("window 객체의 load 이벤트 핸들러 2");
+        }
+
+        window.onload = function() {
+            alert("window 객체의 load 이벤트 핸들러 3");
+        }
+        */
+
+        /*
+        // 핸들러 1, 2, 3 모두 수행됨
+        window.addEventListener("load", function(){
+            alert("window객체의 load이벤트 핸들러 1");
+        }, false);
+
+        window.addEventListener("load", function(){
+            alert("window객체의 load이벤트 핸들러 2");
+        }, false);
+
+        window.addEventListener("load", function(){
+            alert("window객체의 load이벤트 핸들러 3");
+        }, false);
+        */
+        
+        window.onload = function() {
+            let count = 0;
+            let btn1 = document.getElementById("btn1");
+            btn1.onclick = function() {
+                count++;
+                document.getElementById("counter").innerHTML = count;   // counter의 innerHTML 속성값을 count로 변경
+
+                this.onclick = null;  // 한번만 동작하고 우클릭 속성에 null이 할당되어서 더이상 동작하지 않음 (한번만 btn 클릭 가능)
+            }
+
+            let count1 = 0, count2 = 0;
+            let btn2 = document.getElementById("btn2");
+            btn2.onclick= function(){
+                count1++;
+                document.getElementById("count1").innerHTML = count1;             
+            }
+
+            let btn3 = document.getElementById("btn3");
+            btn3.onclick= function(){
+                count2++;
+                document.getElementById("count2").innerHTML = count2;
+                btn2.onclick();  // 강제 이벤트 발생
+            }
+        }
+    </script>
+
+</head>
+<body>
+    DOM Level 0 이벤트 처리 방식 : 초기 이벤트 핸들러 등록 방식 , on이벤트= 이벤트 핸들러(); <br>
+    이벤트의 핸들러를 하나만 등록할 수 있습니다. <br>
+
+    DOM Level 2 이벤트 처리 방식 : W3C 표준 이벤트 핸들러 등록 방식 <br>
+    하나의 이벤트에 대해 여러 이벤트의 핸들러를 등록할 수 있습니다.<br>
+
+    이벤트소스객체.addEventListener("이벤트명", 이벤트 핸들러 함수, 이벤트캡처여부) <br>
+    
+    한번만 실행되는 이벤트와 이벤트 핸들러 : 이벤트 핸들러함수에서 이벤트 소스 객체의 on이벤트 속성에 null할당 <br>
+
+    <button id = "btn1">Count</button>  <span id="counter"></span>
+
+    <h3>이벤트 강제 발생</h3>
+    <button id="btn2">Button1</button><button id="btn3">Button2</button> <br>
+    <h3>Button1 Click Count : <span id="count1"></span> </h3>   
+    <h3>Button2 Click Count : <span id="count2"></span> </h3>   
+    
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript 이벤트</title>
+    
+    <style>
+        div, h1, p { 
+            border : 2px solid black; 
+            padding : 10px;
+            margin : 10px;
+        }    
+    </style>
+
+    <script>
+        window.onload = function () {
+            // 버블링 + stopPropagation()
+            document.getElementById("outerDiv").onclick = function (evt) {
+                evt.stopPropagation();
+                this.style.backgroundColor = "skyblue";
+            };
+            
+            document.getElementById("innerDiv").onclick = function (evt) {
+                evt.stopPropagation();
+                this.style.backgroundColor = "Blue";
+            };
+            
+            document.getElementById("heading1").onclick = function (evt) {
+                evt.stopPropagation();
+                this.style.backgroundColor = "lightblue";
+            };
+
+            document.getElementById("p1").onclick = function (evt) {
+                evt.stopPropagation();
+                this.style.backgroundColor = "cyan";
+            };
+            // p1에서 이벤트가 발생 -> outerDiv까지 모두 지정된 색으로 변경됨
+            // == 안에서부터 바깥으로 전파됨 (기본 이벤트 방식은 버블링 방식이다)
+
+
+            // preventDefault()
+            document.getElementById("searchForm").onsubmit = function (evt) {
+                evt.preventDefault();   // 폼 제출 방지
+                // return false;        // 예전 방식 (지금은 preventDefualt를 권장)
+            };
+
+            document.getElementById("link1").onclick = function (evt) {
+                evt.preventDefault();   // 링크 이동 방지
+            };
+        }
+    </script>
+
+</head>
+<body>
+
+    child -> parent 이벤트 전파 == 버블링 방식 <br>
+    이벤트 전파 방식 :      <br>
+    1. Event Bubbling : child element에서 발생된 이벤트가 상위 parent element로 전파 (Browser의 이벤트 전파 방식)<br>
+    2. Event Capturing : 상위 parent element 에서 발생된 이벤트가 하위 child element들로 전파<br>
+
+    자바스크립트 엔진은 이벤트 발생시  이벤트 핸들러 함수 호출할때 첫번째 인수로 발생한 이벤트 정보가 저장된 event객체를 전달<br>
+    기본 이벤트 전파를 취소하려면 HTMLEvent 객체의 stopPropagation() 메소드를 사용 <br>
+
+    --- <br>
+
+    브라우저 기본 처리 이벤트 <br>
+    <div id="outerDiv">
+        <div id="innerDiv">            
+            <h1 id="heading1"> 
+                <p id="p1">이벤트 전파</p>
+            </h1>
+        </div>
+    </div>
+
+    <hr>
+
+    브라우저가 처리해주는 기본 이벤트를 취소시켜야 할 경우, HTMLEvent객체의 preventDefault() 호출합니다. <br>
+    <form id="searchForm" action="search.jsp" >
+        검색어 <input type="search" name="searchWord"> 
+        <input type="submit" value="검색">
+    </form>
+    <a id="link1" href="http://www.google.com">구글</a>
+
+</body>
+</html>

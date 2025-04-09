@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON객체를 직렬화, 역직렬화 실습</title>
+
+    <script>
+
+        let todos = [];
+        /*
+            window.onload : 페이지가 로드될 때 실행됨
+            sessionStorage.getItem("todos") : 브라우저의 sessionStorage에서 todos 데이터를 가져옴=
+            JSON.parse(stored) : 가져온 JSON 문자열을 JavaScript 객체로 변환
+            renderTodos() : 변환된 데이터를 화면에 렌더링
+        */
+        window.onload=function(){
+            const stored = sessionStorage.getItem("todos");     // 데이터는 sessionStorage를 사용해 브라우저 세션 동안 유지됨
+            if(stored) {
+                todos = JSON.parse(stored);  // 직렬화 -> JSON객체 변환
+                renderTodos();
+            }
+        };
+
+        function renderTodos(){
+            const ul = document.getElementById("todoList");
+            ul.innerHTML="";    // 리스트 초기화
+
+            todos.forEach( todo => {
+                const li = document.createElement("li");
+                li.textContent = todo.text;     // todo.text 속성값을 li에 추가
+                
+                const editBtn = document.createElement("button");
+                editBtn.textContent = "수정";
+                editBtn.onclick = () => {editTodo(todo.id)};
+                
+                const delBtn = document.createElement("button");
+                delBtn.textContent = "삭제";
+                delBtn.onclick = () => {delTodo(todo.id)};
+                /*
+                    delBtn.onclick = delTodo(todo.id);처럼 작성하면, delTodo(todo.id)가 즉시 실행됨
+                    즉, 버튼이 클릭되기 전에 함수가 호출되기 때문에 화살표 함수로 호출
+                */
+
+                li.appendChild(editBtn);    // 수정 버튼 추가
+                li.appendChild(delBtn);     // 삭제 버튼 추가
+                ul.appendChild(li);         // 리스트에 추가
+            })
+        }
+
+        // 추가
+        function addTodo() {
+            const input = document.getElementById("todoInput");
+            const txt = input.value.trim();
+            
+            if(txt === "") return
+            
+            todos.push({id : Date.now(), text : txt});
+            input.value = "";   // 입력창 초기화
+            saveAndRender();
+        }
+
+        // 저장 & 렌더링
+        function saveAndRender() {
+            sessionStorage.setItem("todos", JSON.stringify(todos));     // JSON객체 -> 직렬화
+            renderTodos();
+        }
+
+        // 수정
+        function editTodo(id) {
+            const newText = prompt("수정할 내용을 입력하세요");
+            if(newText === null) return
+
+            const todo = todos.find(t => t.id === id);  // 수정할 todo를 id로 찾기
+
+            if(todo) {
+                todo.text = newText;  // 수정된 내용으로 업데이트
+                saveAndRender();      // 저장 및 렌더링
+            }
+        }
+
+        // 삭제
+        function delTodo(id){
+            todos = todos.filter(t=>t.id !=id );
+            saveAndRender();
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <h2> Todo List</h2> 
+    <input type="text" id="todoInput" placeholder="해야 할 일 입력하세요">
+    <button onclick="addTodo()"> 추가 </button>
+    <ul id="todoList"></ul>
+</body>
+
+</html>

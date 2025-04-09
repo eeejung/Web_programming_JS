@@ -1,0 +1,43 @@
+http://192.10.0.153:9090/web.html
+
+박기연 akasha.park@gmail.com
+
+편집기 VS Code를 사용합니다 https://code.visualstudio.com/download
+www.w3schools.com
+
+수업목차 :
+    HTML 기본
+    CSS 기본
+    JavaScript 발전 history
+    Javascript 기본 문법과 자료형
+    연산자, 형변환, 제어문, 배열
+    함수
+    객체, JSON
+    내장객체
+    BOM , DOM 객체
+    이벤트 처리
+    예외처리
+    비동기 처리 Ajax, Promise, Fetch API
+    Bootstrap , CSS media쿼리를 이용한 반응형 웹 컨텐츠
+
+1.javascript이해
+    http://192.10.0.153:9090/javascript/1.javascript이해.pdf
+2.기본자료형과 연산자
+    http://192.10.0.153:9090/javascript/2.기본자료형과 연산자.pdf
+3.조건문과반복문
+    http://192.10.0.153:9090/javascript/3.조건문과반복문.pdf
+4.함수
+    http://192.10.0.153:9090/javascript/4.함수.pdf
+5.객체
+    http://192.10.0.153:9090/javascript/5.객체.pdf
+
+http://192.10.0.153:9090/dev/html01.html
+
+Day1 수업노트
+html01.html~html06.html , css01.html, js01.html~js04.html, js01.js, mycss.css, myscript.js
+Day2 수업노트
+js05.html~js06.html, function01~function05.html, object01.html~object03.html
+Day3 수업노트
+
+
+

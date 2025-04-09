@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내장객체</title>
+</head>
+<body>
+    slice(start, end) - 원본 배열 또는 문자열을 변경하지 않고, 새로운 객체 반환 (end는 미포함) <br>
+    substring(start, end) - 문자열에서만 사용, 음수 인덱스는 허용하지 않음, start > end 이면 자동으로 바꿔서 처리해줌 <br>
+    split(sperator, limit) - sperator로 tokenize해서 배열로 리턴<br>
+
+    <script>
+        let text = "Hello World!";
+        document.writeln(text+"<br>");
+
+        let result = text.bold();
+        document.writeln(result+"<br>");
+
+        let result2 = text.slice(6, 12);
+        document.writeln(text+"<br>");
+        document.writeln(result2+"<br>");
+
+        let result3 = text.slice(-6);       
+        document.writeln(result2+"<br>");
+
+        let re = text.substring(-6);
+        document.writeln(re+"<br>");
+        re = text.substring(6, 12);
+        document.writeln(re+"<br>");
+
+        let text2 ="사과, 배, 천혜향, 딸기, 참외, 바나나, 토마토";
+        let fruits = text2.split(",", 3);
+        document.writeln(typeof fruits+"<br>");
+        document.writeln(fruits+"<br>");
+    </script>
+
+    <button id="lotto"> 로또 번호 생성 </button>
+    <script>
+        // 로또 번호 6개 생성, 출력
+        document.getElementById("lotto").onclick = function() {
+            let lotto = [];
+
+            while(lotto.length < 6) {
+                // let num = Math.random() * 45 + 1;    -> 이렇게 하면 소수점이 포함되어있음
+
+                let num = Math.floor(Math.random() * 45) + 1;
+                // let num = Math.truc(Math.random() * 45) + 1; // Math.trunc()는 소수점 이하를 버림
+
+                if(!lotto.includes(num)) {
+                    lotto.push(num);
+                }
+            }
+            // lotto.sort((a, b) => a - b); // 오름차순 정렬
+            // lotto.sort((a, b) => b - a); // 내림차순 정렬
+            document.writeln(lotto.join(" ")+"<br>");
+        }
+    </script>
+
+</body>
+</html>
