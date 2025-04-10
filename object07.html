@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    ES6에서 추가된 Map(key, value로 저장하는 자료구조) , Set (value 저장, 중복 허용하지 않음) <br>
+    Map에 저장되는 key는 unique 해야 하며,  배열,  객체, 함수를 key로 사용할 수 있습니다. <br>
+    Map에 저장된 순서대로 요소들을 순회합니다.<br>
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map<br>
+
+   <script>
+        const　map1 = new Map();
+
+        map1.set('name', 'korea');
+        map1.set('age', 30);
+        map1.set(1, 'one');
+
+        console.log(map1.get('name'));  // korea
+        console.log(map1.has('email')); // false
+
+        console.log(map1.size); // 3
+
+        map1.delete('age');
+        console.log(map1.size); // 2
+
+        map1.set('email', 'korea@korea.com');
+        map1.set('address', 'seoul');
+
+        // for each로 요소 순회
+        map1.forEach((key, value) => {
+            console.log(`${key} : ${value}`);
+        })
+        map1.clear(); // map1의 모든 요소 삭제
+        console.log(map1.size); // 0
+   </script>
+
+    Set도 저장한 순서대로 순회합니다 <br>
+    add(), has(), delete(), clear(), size, forEach(callback) 메서드 제공 <br>
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set <br>
+
+    <script>
+        const set = new Set([1, 2, 2, 2, 3]);
+        console.log(set);           // Set(3) {1, 2, 3} 중복된 값은 제거됨
+        console.log(set.has(4));    // false
+    </script>
+
+    ES6에서 함수 또는 클래스를 파일 단위로 모듈화하여 관리할 수 있는 기능 추가됨 <br>
+    export와 import 키워드를 사용해서 파일의 저장된 기능을 내보내기, 가져오기를 합니다 <br>
+    (함수, 변수, 객체 내보내기 export로 가능)
+        -> 코드의 재사용성 + 유지보수성 향상 시킴 <br>
+
+    브라우저의 html 페이지에서 모듈을 사용하려면 script 태그의 type 속성에 module이라고 선언 <br>
+    모듈 파일의 확장자는 .js로 사용 <br>
+    모듈은 import를 사용해서 로드될 때 비동기 방식으로 로드됨 (pormise 객체) <br>
+    실행중에 동적으로 모듈을 로드할때 import()를 사용하면 Promise 객체가 반환됩니다.<br>
+    
+    <!-- export -->
+    <div id="div1"></div>
+    <script type="module" src="./main2.js"></script> <br>
+    
+    <!-- import -->
+    <script>
+        import('./utils.js').then(module => {
+            console.log(module.add(3, 4));
+        })
+    </script>
+
+    export default 를 사용하면 모듈에서 하나의 기본 값 또는 객체 또는 함수를 내보낼 수 있습니다.<br>
+    import 할때 {} 중괄혼 없이 가져오기 할 수 있습니다.<br>
+
+</body>
+</html>

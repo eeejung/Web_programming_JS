@@ -1,0 +1,52 @@
+"**BOM**"과 "**DOM**"은 자바스크립트에서 웹 페이지를 다룰 때 핵심적으로 등장하는 객체 모델
+
+---
+
+### ✅ BOM (Browser Object Model)
+**브라우저 자체를 제어**할 수 있도록 해주는 객체 모델
+
+- 브라우저와 관련된 기능을 제어
+- HTML 문서와는 직접적인 관련은 없음
+
+#### 대표적인 BOM 객체들:
+| 객체 | 설명 |
+|------|------|
+| `window` | BOM의 최상위 객체. 전역 객체이기도 함 |
+| `navigator` | 브라우저 정보 제공 |
+| `screen` | 사용자의 화면 정보 |
+| `location` | 현재 문서의 URL 정보 (이동, 재로딩 등 가능) |
+| `history` | 브라우저 방문 기록 제어 (앞으로/뒤로 등) |
+| `alert()`, `confirm()`, `prompt()` | 브라우저 기본 팝업 기능들 |
+
+---
+
+### ✅ DOM (Document Object Model)
+**HTML 문서의 구조를 객체로 표현한 모델**
+
+- 웹페이지의 내용, 구조, 스타일 등을 **제어하거나 조작** 가능
+- 브라우저가 HTML을 파싱해서 생성함
+
+#### 대표적인 DOM 객체들:
+| 객체/메서드 | 설명 |
+|-------------|------|
+| `document` | DOM의 진입점, HTML 문서 자체를 나타냄 |
+| `getElementById()` | 특정 ID의 요소 선택 |
+| `querySelector()` | CSS 선택자로 요소 선택 |
+| `createElement()` | 새로운 HTML 요소 생성 |
+| `innerHTML`, `textContent` | 요소의 내용 제어 |
+| `addEventListener()` | 이벤트 리스너 등록 |
+
+---
+
+### 🔍 차이점 요약
+
+| 항목 | BOM | DOM |
+|------|-----|-----|
+| 대상 | 브라우저 | HTML 문서 |
+| 주요 객체 | `window`, `navigator`, `location`, `screen` 등 | `document`, HTML 요소들 |
+| 목적 | 브라우저 환경 제어 | 웹페이지 구조 및 내용 제어 |
+| 예시 | `window.alert()`, `location.href` | `document.getElementById()`, `element.innerHTML` |
+
+---
+
+BOM은 브라우저 자체, DOM은 문서(페이지) 구조
