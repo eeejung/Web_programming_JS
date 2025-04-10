@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+		.image_panel{
+			border:1px solid #eeeeee;
+			text-align:center;
+			margin:5px;
+		}
+		.image_panel .title{
+			font-size:9pt;
+			color:#ff0000;
+		}
+		
+	</style>
+
+    <script type="text/javascript" src="ajax01.js" charset="UTF-8"></script>
+    
+</head>
+<body>
+    버튼을 클릭하면 비동기 요청 (GET) imageProc.jsp 에서 이미지 5개 (./images/img1.jpg, ....)를 JSON객체로 응답 <br>
+
+    <div>
+		<button id="loadImage">이미지 정보 읽어들이기</button>
+	</div>
+
+    <div id="image_container">
+        <!--여기에 가져온 이미지를 DOM API를 사용해서 추가함-->
+
+    </div>
+</body>
+</html>
