@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM(document object model)</title>
+</head>
+<body>
+    DOM API 는 html문서에 요소 검색, 새로운 요소 추가, 요소 변경, 삭제, 속성 추가 등
+    동적으로 문서 구조를 변경할 수 있습니다.<br>
+    [HTML문서의 요소를 검색] <br>
+    document.getElementById(id) : id속성으로 element객체를 검색, 1개만 반환 <br>
+    document.getElementsByTagName(태그이름) : 모든 element를 배열과 유사한 HTMLCollection(배열과 유사)로 반환 <br>
+    document.getElementsByName(name) : name속성값으로 element객체를 검색, HTMLCollection(배열과 유사)로 반환 <br>
+    document.getElementsByClassName(name) : class속성값으로 element객체를 검색, HTMLCollection(배열과 유사)로 반환 <br>
+    
+    document.querySelector('css의 selector문법을 조건') : 조건에 일치하는 element중 첫번째 검색된 1개만 반환 <br>
+    document.querySelectorAll('css의 selector문법을 조건') : 조건에 일치하는 모든 element를 배열과 유사한 HTMLCollection(배열과 유사)로 반환
+    <hr>
+    <ul class="menu">
+       <li>Home</li>
+       <li id="about">About</li>
+       <li>Contact</li>
+       <li>sitemap</li>
+    </ul>
+    
+    <script>
+        let item1 = document.querySelector('.menu li');
+        console.log(item1);
+        let items1 = document.querySelectorAll('.menu li');
+        console.log(items1);
+        let items2 = document.querySelectorAll('.menu > li');
+        console.log(items2);
+
+        items1.forEach((item, index) => {
+            console.log(`${index + 1} : `, item.textContent);   
+        })
+    </script>
+
+</body>
+</html>

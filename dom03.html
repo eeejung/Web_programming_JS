@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style type="text/css">
+        td {
+          border-style: solid;
+          border-width: 1px;
+          font-size: 200%;
+        }
+    
+    
+        #checkedResult {
+          color: green;
+          font-size: 200%;
+        }
+    </style>
+
+    <script>
+        window.onload=function(){
+            var btn = document.querySelector("#findChecked") ;
+            btn.onclick = function(){
+                var inputs = document.querySelectorAll("input:checked");
+                inputs.forEach((item, idx)=>{
+                    document.querySelector("#checkedResult").innerHTML+=inputs[idx].name+", ";
+                });
+            }
+        }
+    </script>
+
+</head>
+<body>
+    <section>
+
+        <table>
+          <tr>
+            <td><input type="checkbox" name="A1">A1</td>
+            <td><input type="checkbox" name="A2">A2</td>
+            <td><input type="checkbox" name="A3">A3</td>
+          </tr>
+    
+          <tr>
+            <td><input type="checkbox" name="B1">B1</td>
+            <td><input type="checkbox" checked name="B2">B2</td>
+            <td><input type="checkbox" name="B3">B3</td>
+          </tr>
+    
+          <tr>
+            <td><input type="checkbox" name="C1">C1</td>
+            <td><input type="checkbox" name="C2">C2</td>
+            <td><input type="checkbox" name="C3">C3</td>
+          </tr>
+    
+        </table>
+        <div>Select various checkboxes, then hit the button to identify them using querySelectorAll("*:checked").</div>
+        <button type="button" id="findChecked" autofocus>Find checked boxes</button>
+        <div id="checkedResult"></div>
+    
+          
+      </section>
+    
+</body>
+</html>

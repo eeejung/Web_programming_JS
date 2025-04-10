@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM API</title>
+    <script>
+        window.onload = function() {
+            let h3 = document.createElement("h3");
+            h3.textContent = "집";
+
+            let h30 = document.createElement("h3");
+            let textNode = document.createTextNode("집가고싶다");   
+            h30.appendChild(textNode);    // createTextNode가 반환하는걸 자식노드로 추가해줘야함
+
+            let h31 = document.createElement("h3");
+            h31.innerHTML = "<mark><strong> 아아아아아아 </strong></mark>";      // html 내용을 그대로 렌더링해서 전달시켜줌
+
+            document.body.appendChild(h3);
+            document.body.appendChild(h30);
+            document.body.appendChild(h31);
+
+            let img1 = document.createElement("img");
+            img1.src = "/img_files/img.jpg";
+            img1.width = '200';
+            img1.height = '200';
+
+            let img2 = document.createElement("img");
+            img2.setAttribute("src", "/img_files/kk.jpg");
+
+            document.body.appendChild(img1);
+            document.body.appendChild(img2);
+        }
+    </script>
+</head>
+<body>
+    DOM 요소에서 자주 사용하는 주요 속성들 : <br>
+    innerHTML : HTML태그를 포함하는 내용을 설정  <br> 
+    textContent	: 태그의 내용으로 순수한 텍스트를 설정<br>
+    value : <input>, <textarea> 에서 사용자가 입력한 값이 저장되는 속성<br>
+    className : 클래스 이름을 문자열로 반환 및 설정 <br>   
+    classList : 클래 스 속성의 값 목록  <br>
+    id  <br>
+    style  <br>
+    attibutes  <br>
+    parentElement  <br>
+    child   <br>
+    children  <br>
+    nextElementSibling  <br>
+    previousElementSibling  <br>
+    firstElementChild<br>
+    lastElementChild<br>
+</body>
+</html>

@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM API</title>
+    <style>
+        td {
+          border-style: solid;
+          border-width: 1px;
+          font-size: 300%;
+        }
+    
+        td:hover {
+          background-color: cyan;
+        }
+    
+        #hoverResult {
+          color: green;
+          font-size: 200%;
+        }
+    </style>
+
+    <script>
+        window.onload=function(){
+            var btn = document.querySelector("#findHover") ;
+            btn.onclick = function(){
+                var inputs = document.querySelector("td:hover");
+                // 1. 
+                document.querySelector("#hoverResult").innerHTML = inputs.innerHTML;
+                // 2. 
+                document.querySelector("#hoverResult").textContent = inputs.textContent;
+            }
+        };
+    </script>
+
+</head>
+<body>
+    <section>
+		<!-- create a table with a 3 by 3 cell display -->
+		<table>
+		  <tr>
+			<td>A1</td> <td>A2</td> <td>A3</td>
+		  </tr>
+		  <tr>
+			<td>B1</td> <td>B2</td> <td>B3</td>
+		  </tr>
+		  <tr>
+			<td>C1</td> <td>C2</td> <td>C3</td>
+		  </tr>
+		</table>
+		<button type="button" id="findHover" autofocus>Find 'td:hover' target</button>
+		<div id="hoverResult"></div>		
+	</section>
+</body>
+</html>
