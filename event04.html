@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+		body{
+			font-size:9pt;
+		}
+		#panel1{
+			border:1px #000000 solid;
+			line-height:400px;
+			font-size:100px;
+			width:400px;
+			height:400px;
+			text-align:center;
+			vertical-align:middle;		
+		}
+	</style>
+    <script>
+        let panel ;
+        let timerID;
+        let totalNumber = 0;
+
+        window.onload = function(){
+            panel = document.getElementById("panel1");
+            let startBtn  = document.getElementById("btn_Start");
+            startBtn.onclick = function(){
+               let totalNumber= Number(document.getElementById("lab_total").value);
+               panel.style = "color:#000000";
+               timerID = setInterval(()=>{
+                   let num = Math.floor(Math.random()*totalNumber+1);
+                   panel.innerHTML = num;
+                   let fSize = Math.floor(Math.random()*200+100);
+                  
+                   panel.style = `font-size:${fSize}px`;
+               }  , 20);
+            }
+
+            let stopBtn  = document.getElementById("btn_Stop");
+            stopBtn.onclick = function(){
+                if(timerID) {
+                    clearInterval(timerID);
+                    timerID =  0;
+                    panel.setAttribute("style", "color:#ff0000;font-size:200px");
+                }
+            } 
+
+        }
+    </script>
+</head>
+<body>
+    <div> 
+		<h4>경품추첨기-ver 0.1</h4>
+		<div id="panel1" > 	
+		</div>
+
+		<div id="nav">
+			참여인원 : <input type="text" id="lab_total" value="100"></input>
+			<button id="btn_Start">시작</button>
+			<button id="btn_Stop">멈춤</button>
+		</div>
+   </div>
+</body>
+</html>
