@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- async -->
+    <script>
+        async function f() {
+            return 1;
+        }
+
+        f().then(alert); // 1
+    </script>
+
+    <!-- await 
+        - 프라미스가 처리될 때까지 기다립니다
+        - await는 async 함수 안에서만 동작합니다.
+    -->
+    <script>
+        async function f() {
+            let promise = new Promise((resolve, reject) => {
+                setTimeout(() => resolve("완료!"), 1000)
+            });
+            let result = await promise; // 프라미스가 이행될 때까지 기다림(*)
+                alert(result); // "완료!"
+        }
+
+        f(); // "완료!" (1초 후)
+    </script>
+</body>
+</html>
